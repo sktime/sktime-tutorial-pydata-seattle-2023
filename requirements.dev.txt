@@ -1,0 +1,6 @@
+flake8
+isort
+black
+pydocstyle
+pre-commit
+ipykernel

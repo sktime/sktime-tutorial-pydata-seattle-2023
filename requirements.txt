@@ -1,0 +1,6 @@
+skbase==0.4
+sktime==0.18
+seaborn
+jupyter
+pytest
+pmdarima
