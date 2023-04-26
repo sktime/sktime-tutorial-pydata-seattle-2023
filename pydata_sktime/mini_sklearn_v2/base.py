@@ -103,7 +103,7 @@ class BaseRegressor(BaseEstimator):
 
         y_pred = self._predict(X)
 
-        return_config = self.get_config("return_type")
+        return_config = self.get_config()["return_type"]
         if return_config == "numpy":
             return y_pred.values
         elif return_config == "pandas":
@@ -219,7 +219,7 @@ class BaseTransformer(BaseEstimator):
 
         Xt = self._transform(X)
 
-        return_config = self.get_config("return_type")
+        return_config = self.get_config()["return_type"]
         if return_config == "numpy":
             return Xt.values
         elif return_config == "pandas":
