@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Base class and template for regressors and transformers."""
-import numpy as np
-import pandas as pd
-
+"""Extension template for regressors."""
 from .base import BaseRegressor
 
 
-class LinReg(BaseRegressor):
+class ClassName(BaseRegressor):
     """Base class for supervised regressors."""
 
-    def __init__(self, shrink=0.0):
-        self.shrink = shrink
+    def __init__(self, paramname, paramname2="paramname2default"):
+        self.paramname = paramname
+        self.paramname2 = "paramname2default"
 
-        super(LinReg, self).__init__()
+        super(ClassName, self).__init__()
+
+        # any parameter checks go here
 
     def fit(self, X, y):
         """Fit regressor to training data.
@@ -43,9 +43,8 @@ class LinReg(BaseRegressor):
                 f"but X had {len(X)} rows, and y had {len(y)} rows"
             )
 
-        beta = np.matmul(np.linalg.pinv(X.values), y.values)
-        beta = pd.DataFrame(beta, index=X.columns, columns=y.columns)
-        self.beta_ = beta
+        # insert logic for estimator here
+        # fitted parameters should be written to parameters ending in underscore
 
         # this should be the underscore tag
         # the skbase BaseEstimator handles is_fitted in dependency of this
@@ -85,5 +84,9 @@ class LinReg(BaseRegressor):
                 "but fit has not been called yet"
             )
 
-        beta = self.beta_
-        return X.dot(beta)
+        # implement logic for prediction here
+        # this can read out parameters fitted in fit, or hyperparameters from init
+        # no attributes should be written to self
+
+        y_pred = None
+        return y_pred

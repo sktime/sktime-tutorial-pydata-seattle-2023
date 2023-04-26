@@ -6,6 +6,8 @@ from .base import BaseTransformer
 class Scaler(BaseTransformer):
     """Base class for supervised regressors."""
 
+    _tags = {"transformer_type": "preprocessing"}
+
     def __init__(self, strategy="std"):
         self.strategy = strategy
 
@@ -18,7 +20,7 @@ class Scaler(BaseTransformer):
                 f'"std" or "minmax", but found {strategy}'
             )
 
-    def fit(self, X):
+    def _fit(self, X):
         """Fit transformer to training data.
 
         Writes to self:
@@ -50,7 +52,7 @@ class Scaler(BaseTransformer):
 
         return self
 
-    def transform(self, X):
+    def _transform(self, X):
         """Transform data with fitted transformer.
 
         State required:

@@ -9,6 +9,8 @@ from .base import BaseRegressor
 class LinReg(BaseRegressor):
     """Base class for supervised regressors."""
 
+    _tags = {"regressor_type": "linear"}
+
     def __init__(self, shrink=0.0):
         self.shrink = shrink
 

@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Base class and template for regressors and transformers."""
+"""Extension template for transformers."""
 from .base import BaseTransformer
 
 
-class Scaler(BaseTransformer):
+class ClassName(BaseTransformer):
     """Base class for supervised regressors."""
 
-    def __init__(self, strategy="std"):
-        self.strategy = strategy
+    def __init__(self, paramname, paramname2="paramname2default"):
+        self.paramname = paramname
+        self.paramname2 = "paramname2default"
 
-        super(Scaler, self).__init__()
+        super(ClassName, self).__init__()
 
-        # this is fine here because of how set_params works!
-        if strategy not in ["std", "minmax"]:
-            raise ValueError(
-                "in Scaler, strategy must be one of the strings "
-                f'"std" or "minmax", but found {strategy}'
-            )
+        # any parameter checks go here
 
     def fit(self, X):
         """Fit transformer to training data.
@@ -38,20 +34,8 @@ class Scaler(BaseTransformer):
         # store columns in self for later check with transform
         self._X_columns = X.columns
 
-        # min, max, max-min as fitted params, for minmax
-        X_min = X.min(axis=0)
-        X_max = X.max(axis=0)
-        X_span = X_max - X_min
-
-        # mean, std as fitted params, for std
-        X_std = X.std(axis=0)
-        X_mean = X.mean(axis=0)
-
-        self.X_min_ = X_min
-        self.X_max_ = X_max
-        self.X_span_ = X_span
-        self.X_std_ = X_std
-        self.X_mean_ = X_mean
+        # insert logic for estimator here
+        # fitted parameters should be written to parameters ending in underscore
 
         # this should be the underscore tag
         # the skbase BaseEstimator handles is_fitted in dependency of this
@@ -91,18 +75,9 @@ class Scaler(BaseTransformer):
                 "but fit has not been called yet"
             )
 
-        strategy = self.strategy
-
-        if strategy == "minmax":
-            X_min = self.X_min_
-            X_span = self.X_span_
-
-            Xt = (X - X_min) / X_span
-
-        elif strategy == "std":
-            X_mean = self.X_mean_
-            X_std = self.X_std_
-
-            Xt = (X - X_mean) / X_std
+        # implement logic for transformation here
+        # this can read out parameters fitted in fit, or hyperparameters from init
+        # no attributes should be written to self
+        Xt = X  # do something
 
         return Xt
