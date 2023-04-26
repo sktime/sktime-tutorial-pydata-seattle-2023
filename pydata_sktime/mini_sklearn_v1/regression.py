@@ -69,7 +69,7 @@ class LinReg(BaseRegressor):
 
         Returns
         -------
-        y : pandas DataFrame, same length as `X`
+        y : pandas DataFrame, same length as `X`, same columns as `y` in `fit`
             labels predicted for `X`
         """
         if not (X.columns == self._X_columns).all():

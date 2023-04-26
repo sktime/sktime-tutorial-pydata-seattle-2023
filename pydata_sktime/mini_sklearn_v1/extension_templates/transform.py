@@ -3,9 +3,14 @@
 from .base import BaseTransformer
 
 
+# todo: change class name and write docstring
 class ClassName(BaseTransformer):
     """Base class for supervised regressors."""
 
+    # todo: fill init
+    # params should be written to self and never changed
+    # super call must not be removed, change class name
+    # parameter checks can go after super call
     def __init__(self, paramname, paramname2="paramname2default"):
         self.paramname = paramname
         self.paramname2 = "paramname2default"
@@ -14,6 +19,7 @@ class ClassName(BaseTransformer):
 
         # any parameter checks go here
 
+    # todo: implement logic
     def fit(self, X):
         """Fit transformer to training data.
 
@@ -41,8 +47,10 @@ class ClassName(BaseTransformer):
         # the skbase BaseEstimator handles is_fitted in dependency of this
         self._is_fitted = True
 
+        # self must be returned at the end
         return self
 
+    # todo: implement logic
     def transform(self, X):
         """Transform data with fitted transformer.
 
