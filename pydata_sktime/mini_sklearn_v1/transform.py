@@ -4,7 +4,27 @@ from .base import BaseTransformer
 
 
 class Scaler(BaseTransformer):
-    """Base class for supervised regressors."""
+    """Scale data by minmax or standard normalization strategy.
+
+    Parameters
+    ----------
+    strategy : string, one of "minmax" or "std"
+        "std" = each column of X is subtracted mean, divided standard deviation
+        "minmax" = each column is linearly scaled to minimum = 0, maximum = 1
+
+    Attributes
+    ----------
+    X_min_ : pd.Series, index = index of X in fit
+        column-wise minimum of X in fit
+    X_max_ : pd.Series, index = index of X in fit
+        column-wise maximum of X in fit
+    X_span_ : pd.Series, index = index of X in fit
+        column-wise maximum minus minimum, of X in fit
+    X_mean_ : pd.Series, index = index of X in fit
+        column-wise mean, of X in fit
+    X_std_ : pd.Series, index = index of X in fit
+        column-wise standard deviation, of X in fit
+    """
 
     def __init__(self, strategy="std"):
         self.strategy = strategy

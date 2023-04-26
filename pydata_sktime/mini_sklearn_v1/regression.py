@@ -7,7 +7,20 @@ from .base import BaseRegressor
 
 
 class LinReg(BaseRegressor):
-    """Base class for supervised regressors."""
+    """Linear (ridge) regression without intercept.
+
+    Parameters
+    ----------
+    shrink : float, must be 0 or larger
+        Tikhonov regularization parameter
+
+    Attributes
+    ----------
+    beta_ : pd.DataFrame, present after fitting
+        coefficients of the linear regressor fit
+        rows = variables in X
+        columns = variables in y
+    """
 
     def __init__(self, shrink=0.0):
         self.shrink = shrink
