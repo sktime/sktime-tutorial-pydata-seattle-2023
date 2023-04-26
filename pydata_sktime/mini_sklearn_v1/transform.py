@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Base class and template for regressors and transformers."""
+"""Example transformers."""
 from .base import BaseTransformer
 
 

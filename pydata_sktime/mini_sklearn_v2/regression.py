@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Base class and template for regressors and transformers."""
+"""Example regressors."""
 import numpy as np
 import pandas as pd
 
