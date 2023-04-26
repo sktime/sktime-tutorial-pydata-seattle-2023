@@ -1,1 +1,1 @@
-"""PyData Seattle sktime workshop."""
+"""PyData Seattle skbase workshop."""
