@@ -3,7 +3,7 @@
 from skbase.base import BaseEstimator as _BaseEstimator
 
 
-class BaseEstimator:
+class BaseEstimator(_BaseEstimator):
     """Base class for fittable objects."""
 
     # config common to all estimators
@@ -17,7 +17,7 @@ class BaseEstimator:
     _tags = {"estimator_type": "estimator"}
 
 
-class BaseRegressor(_BaseEstimator):
+class BaseRegressor(BaseEstimator):
     """Base class for supervised regressors."""
 
     _tags = {"estimator_type": "regressor"}
@@ -136,7 +136,7 @@ class BaseRegressor(_BaseEstimator):
         raise NotImplementedError
 
 
-class BaseTransformer(_BaseEstimator):
+class BaseTransformer(BaseEstimator):
     """Base class for transformers."""
 
     _tags = {"estimator_type": "transformer"}
