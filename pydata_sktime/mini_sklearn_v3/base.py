@@ -20,11 +20,11 @@ class _CommonTags():
     _tags = {"estimator_type": "estimator"}
 
 
-class BaseEstimator(_BaseEstimator, _CommonTags):
+class BaseEstimator(_CommonTags, _BaseEstimator):
     """Base class for fittable objects."""
 
 
-class BaseMetaEstimator(_BaseMetaEstimator, _CommonTags):
+class BaseMetaEstimator(_CommonTags, _BaseMetaEstimator):
     """Base class for fittable composite meta-objects."""
 
 
