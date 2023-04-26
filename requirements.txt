@@ -1,5 +1,5 @@
-skbase==0.4
-sktime==0.18
+skbase<0.5
+sktime<0.19
 seaborn
 jupyter
 pytest
